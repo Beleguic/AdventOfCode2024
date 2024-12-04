@@ -7,3 +7,8 @@ docker-compose up --build
 docker-compose down
 
 ### Go to : http://localhost:8080
+
+- Day 1 ⭐⭐
+- Day 2 ⭐⭐
+- Day 3 ⭐⭐
+- Day 4 ⭐⭐
