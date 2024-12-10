@@ -8,16 +8,16 @@ docker-compose down
 
 ### Go to : http://localhost:8080
 
-- Day 1 ⭐⭐
-- Day 2 ⭐⭐
-- Day 3 ⭐⭐
-- Day 4 ⭐⭐
-- Day 5 ⭐⭐
-- Day 6 ⭐⭐
-- Day 7 ⭐⭐
-- Day 8 ⭐⭐
-- Day 9 ⭐⭐
-- Day 10 ⭐⭐
+- Day 1 &nbsp;&nbsp;⭐⭐
+- Day 2 &nbsp;&nbsp;⭐⭐
+- Day 3 &nbsp;&nbsp;⭐⭐
+- Day 4 &nbsp;&nbsp;⭐⭐
+- Day 5 &nbsp;&nbsp;⭐⭐
+- Day 6 &nbsp;&nbsp;⭐⭐
+- Day 7 &nbsp;&nbsp;⭐⭐
+- Day 8 &nbsp;&nbsp;⭐⭐
+- Day 9 &nbsp;&nbsp;⭐⭐
+- Day 10&nbsp;⭐⭐
 - Day 11
 - Day 12
 - Day 13
