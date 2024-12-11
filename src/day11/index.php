@@ -1,8 +1,5 @@
 <?php
 
-ini_set('memory_limit', '8095M');
-set_time_limit(-1);
-
 /*** Part 1 ***/
 echo("<pre>");
 
@@ -32,45 +29,54 @@ for($i = 0; $i < $numberOfBlink; $i++){
 
 var_dump("---- Partie 1 ----");
 var_dump("Nomber of stone afeter ".$numberOfBlink." : " . sizeof($stone));
+
 /*** Part 2 ***/
 
-/*$file = fopen($filename, 'r');
+$file = fopen($filename, 'r');
 $stone = [];
 while ($line = fgets($file)) {
     $line = str_replace("\n", "", $line);
-    $stone = explode(' ',$line);
+    $stoneTemp = explode(' ',$line);
 }
 
 fclose($file);
-*/
+
+$stone = [];
+foreach ($stoneTemp as $key => $value) {
+	$quantity = 1;
+	if(!isset($stone[$value])){
+		$stone[$value] = ['value' => $value, 'quantity' => 0];
+	}
+	$stone[$value]['quantity'] += $quantity;
+}
 
 $numberOfBlink = 75;
 
 for($i = 0; $i < $numberOfBlink; $i++){
-    $fichierTampon = "./fileTemp".$i.".txt";
-    $fichier = fopen($fichierTampon, "r");
-    $fichierResult = "./fileTemp".($i + 1).".txt";
-    $fichierRes = fopen($fichierResult, "a");
-    var_dump($i);
-    while ($line = fgets($fichier)) {
-        $oneStone = str_replace("\n", "", $line);
-        $newStone = determineWhichRule($oneStone);
+    $newStoneList = [];
+    foreach($stone as $key => $oneStone){
+    	$quantity = $oneStone['quantity'];
+    	$value = $oneStone['value'];
+        $newStone = determineWhichRule($value);
         foreach($newStone as $oneNewStone){
-            fwrite($fichierRes, $oneNewStone . "\n");
+        	if(!isset($newStoneList[$oneNewStone])){
+        		$newStoneList[$oneNewStone] = ['value' => $oneNewStone, 'quantity' => 0];
+        	}
+        	$newStoneList[$oneNewStone]['quantity'] += $quantity;
+            
         }
     }
-    fclose($fichier);
-    fclose($fichierRes);
+    $stone = $newStoneList;
 }
 
 $numberOfTotalStone = 0;
-$result = fopen("./fileTemp75.txt", 'r');
-while($line = fgets($result)){
-    $numberOfTotalStone++;
+foreach ($stone as $key => $value) {
+	$numberOfTotalStone += $value['quantity'];
 }
 
 var_dump("---- Partie 2 ----");
-var_dump("Nomber of stone afeter ".$numberOfBlink." : " . $numberOfTotalStone);
+var_dump("Number of stone after ".$numberOfBlink." : " . $numberOfTotalStone);
+
 
 function determineWhichRule($oneStone){
 
