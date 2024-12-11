@@ -18,7 +18,7 @@ docker-compose down
 - Day 8 &nbsp;&nbsp;⭐⭐
 - Day 9 &nbsp;&nbsp;⭐⭐
 - Day 10&nbsp;⭐⭐
-- Day 11
+- Day 11&nbsp;⭐⭐
 - Day 12
 - Day 13
 - Day 14
