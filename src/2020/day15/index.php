@@ -3,32 +3,42 @@
 /*** Part 1 ***/
 echo("<pre>");
 
-$filename = './input';
+$input = explode(',',"0,3,6");
 
-$file = fopen($filename, 'r');
-$safeReport = 0;
-while ($line = fgets($file)) {
-    $line = str_replace("\n", "", $line);
+$lastNumberSpockIndex = [];
 
+$lastIndexSpoken = 0;
+for ($i=0; $i < 2020; $i++) {
+    if(isset($input[$i])){
+        $lastIndexSpoken = $i;
+        $lastNumberSpockIndex[$input[$i]][0] = $i;
+    }
+    else{
+        if(isset($lastNumberSpockIndex[$input[$i - 1]]) && sizeof($lastNumberSpockIndex[$input[$i - 1]]) == 2){
+            $input[$i] = $lastNumberSpockIndex[$input[$i - 1]][1] - $lastNumberSpockIndex[$input[$i - 1]][0];
+            $lastNumberSpockIndex[$input[$i - 1]][0] = $lastNumberSpockIndex[$input[$i - 1]][1];
+            $lastNumberSpockIndex[$input[$i - 1]][1] = $i;
 
-
+            if($input[$i] != $input[$i - 1]){
+                if(isset($lastNumberSpockIndex[$input[$i]][1])){
+                    $lastNumberSpockIndex[$input[$i]][0] = $lastNumberSpockIndex[$input[$i]][1];
+                    $lastNumberSpockIndex[$input[$i]][1] = $i;
+                }
+                else{
+                    $lastNumberSpockIndex[$input[$i]][1] = $i;
+                }
+            }
+            
+        }
+        elseif(isset($lastNumberSpockIndex[$input[$i - 1]]) && sizeof($lastNumberSpockIndex[$input[$i - 1]]) == 1){
+            $input[$i] = 0;
+            $lastNumberSpockIndex[$input[$i]][1] = $i;
+        }
+        else{
+            $input[$i] = 0;
+            $lastNumberSpockIndex[$input[$i]][0] = $i;
+        }
+    }
 }
 
-fclose($file);
-
-var_dump("---- Partie 1 ----");
-
-/*** Part 2 ***/
-
-$file = fopen($filename, 'r');
-$safeReport = 0;
-while ($line = fgets($file)) {
-    $line = str_replace("\n", "", $line);
-
-
-
-}
-
-fclose($file);
-
-var_dump("---- Partie 2 ----");
+var_dump($input);
